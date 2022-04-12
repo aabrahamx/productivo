@@ -37,3 +37,10 @@
     transform: translateY(0px);
   }
 }
+
+/* --- mine style ------ */
+.AddToCalendar {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vh;
+}
