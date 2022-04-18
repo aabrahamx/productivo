@@ -1,4 +1,6 @@
 .App {
+  min-height: 100vh;
+  background-color: snow;
   text-align: center;
 }
 
@@ -39,8 +41,9 @@
 }
 
 /* --- mine style ------ */
-.AddToCalendar {
+.AddAction {
   position: fixed;
   bottom: 5vh;
-  right: 5vh;
+  right: 10vh;
+  z-index: 5;
 }
