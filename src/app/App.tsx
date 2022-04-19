@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import { Counter } from '../features/counter/Counter';
+
 import { AddAction } from '../components/AddAction/AddAction'
-import { HeaderSearch } from '../components/HeaderSearch/HeaderSearch'
 import { FormContainer } from '../components/FormContainer/FormContainer';
+
 import './App.css';
 
 
