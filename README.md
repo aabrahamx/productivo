@@ -1,7 +1,7 @@
 # **Productivo 💡**
 
 ## **Details**
-The app is a calendar where you can track of personal and work time, as well as, manage all your trackable and measurable goals where you get status. The idea behind it is to manage time effectively and to provide clarity on goal setting and tracking of progress.
+A simple to do app to track track of your list. Future plans are to include calendar like features, drag n' drop and goal tracking.
 
 ### **Tech Stack 🏗**
 The app is currently in development mode. Main focus currently is in building of the UI
