@@ -1,7 +1,7 @@
 # **Productivo 💡**
 
 ## **Details**
-A simple to do app to track track of your list. Future plans are to include calendar like features, drag n' drop and goal tracking.
+A simple todo app to track of your list. Future plans are to include calendar like features, drag n' drop and goal tracking.
 
 ### **Tech Stack 🏗**
 The app is currently in development mode. Main focus currently is in building of the UI
