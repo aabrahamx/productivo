@@ -1,56 +1,38 @@
-# **Productivo 💡**
+# Productivo 💡
 
-## **Details**
-The app is a calendar where you can track of personal and work time, as well as, manage all your trackable and measurable goals where you get status. The idea behind it is to manage time effectively and to provide clarity on goal setting and tracking of progress.
+![app image](./src/assets/img/app.png)
 
-### **Tech Stack 🏗**
-The app is currently in development mode. Main focus currently is in building of the UI
+## Details
+  A simple todo app, that helps with your todo's between the different stages of your productivity. Currently working on adding filtering, date tracking, as well as, other pwa features.
 
-#### **Front-End Stacks**
+### Built with
 - TypeScript
 - React
 - Redux
 - Tailwind CSS
+- Emotion
 
-#### **Testing**
-- Jest - Unit Test
 
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## **Available Scripts**
+### **Available Scripts**
 
-### **Development Mode**
+#### **Development Mode**
 ```sh
 npm start
 ```
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### **Testing**
+#### **Testing**
 ```
 npm test
 ```
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### **Production Mode**
+#### **Production Mode**
 ```
 npm run build
 ```
 
-Builds the app for production to the **`build`** folder.<br />
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### **Custom Configuration**
-```
-npm run eject
-```
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-## Learn More
+### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
