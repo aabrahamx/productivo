@@ -3,14 +3,17 @@
 ![app image](./src/assets/img/app.png)
 
 ## Details
-  A simple todo app, that helps with your todo's between the different stages of your productivity. Currently working on adding filtering, date tracking, as well as, other pwa features.
+  A simple todo app, that helps you track between the different stages of your productivity. Currently working on adding filtering, date tracking, as well as, other PWA features.
 
 ### Built with
 - TypeScript
 - React
 - Redux
 - Tailwind CSS
-- Emotion
+
+### Testing
+- React Testing Library
+- Jest
 
 
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
