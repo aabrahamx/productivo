@@ -6,27 +6,34 @@ export const mockData: Todo[] = [
     title: 'Home Work',
     description: 'Finish home work before midnight',
     status: 'todo',
-    tags: null,
+    tags: '',
   },
   {
     id: 1652388390066,
-    title: 'laundry',
-    description: 'you need to get detergent first',
+    title: 'Laundry',
+    description: 'Get detergent first',
     status: 'doing',
     tags: 'personal',
   },
   {
     id: 1652389577685,
-    title: 'meeting',
+    title: 'Meeting',
     description: '',
     status: 'finished',
     tags: 'work',
   },
   {
     id: 1652389601893,
-    title: 'pay bills',
-    description: 'make credit card and ',
+    title: 'Pay bills',
+    description: 'Make credit card and utility payments',
     status: 'doing',
     tags: 'personal',
   },
 ];
+
+
+export function fetchData() {
+  return setTimeout(() => {
+    return mockData
+  }, 2000)
+}
