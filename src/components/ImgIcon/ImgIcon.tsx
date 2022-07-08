@@ -1,31 +1,34 @@
 import React from 'react';
-import menu from '../../assets/icons/dots.png'
+import { useAppSelector } from '../../app/hooks';
+import { selectTheme } from '../../features/theme/themeSlice';
+import menu from '../../assets/icons/dots.png';
 
 interface IProps {
-  name: 'add' | 'close' | 'menu';
-  util?: string;
-  color: 'white' | 'black';
+  iconType: 'add' | 'close' | 'menu';
+  className?: string;
 }
 
 const icons = {
-  black: {
+  dark: {
     add: 'https://img.icons8.com/ios-glyphs/90/000000/plus-math.png',
     close: 'https://img.icons8.com/ios-glyphs/90/000000/delete-sign.png',
     menu: menu,
   },
-  white: {
+  light: {
     add: 'https://img.icons8.com/ios-glyphs/90/ffffff/plus-math.png',
     close: 'https://img.icons8.com/ios-glyphs/90/ffffff/delete-sign.png',
-    menu: 'https://img.icons8.com/ios-glyphs/90/ffffff/circled-menu.pngg',
+    menu: menu,
   },
 };
 
-export default function ImgIcon({ name, util, color }: IProps) {
+export const ImgIcon: React.FC<IProps> = ({ iconType, className }) => {
+  const appTheme = useAppSelector(selectTheme);
+  const iconTheme = appTheme === 'light' ? 'dark' : 'light';
   return (
     <img
-      alt={name + ' icon'}
-      src={icons[color][name]}
-      className={'m-auto pointer-events-none ' + util}
+      alt={`${iconType} icon`}
+      src={icons[iconTheme][iconType]}
+      className={`${className} m-auto h-full pointer-events-none`}
     />
   );
-}
+};
