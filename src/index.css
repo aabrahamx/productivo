@@ -16,16 +16,11 @@ code {
     monospace;
 }
 
-* {
-  outline: 0px solid red;
-}
-
 /* add @layer utilities from tailwind css */
 * {
   scrollbar-width: thin;
   scrollbar-color: darkgrey whitesmoke;
 }
-
 /* Chrome, Edge, Safari */
 *::-webkit-scrollbar {
   width: 4px;

@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
-export interface IState {
+export interface ITheme {
   theme: 'light' | 'dark';
 }
 
-const initialState: IState = {
+const initialState: ITheme = {
   theme: 'dark',
 };
 

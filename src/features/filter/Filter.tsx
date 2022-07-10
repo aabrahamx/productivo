@@ -4,7 +4,7 @@ import { change, selectFilter } from './filterSlice';
 
 const options = ['all', 'work', 'personal'];
 
-export default function Filter() {
+const Filter: React.FC = () => {
   const filter = useAppSelector(selectFilter);
   const dispatch = useAppDispatch();
 
@@ -13,25 +13,21 @@ export default function Filter() {
   };
 
   return (
-    <fieldset onChange={handleRadioChange}>
-      {options.map((value) => {
-        const cappedValue = value[0].toUpperCase() + value.substring(1);
-
+    <select
+      onChange={handleRadioChange}
+      value={filter}
+      className="bg-slate-600 p-1 outline-none text-sm w-fit"
+    >
+      {options.map((option) => {
+        const formattedOption = option[0].toUpperCase() + option.substring(1);
         return (
-          <section className="inline-flex ml-2 mr-5 flex flex-col items-center">
-            <label htmlFor={value} className="font-semibold">
-              {cappedValue}
-            </label>
-            <input
-              name="filter"
-              id={value}
-              type="radio"
-              value={value}
-              checked={filter === value ? true : false}
-            />
-          </section>
+          <option className="text-xs" value={option}>
+            {formattedOption}
+          </option>
         );
       })}
-    </fieldset>
+    </select>
   );
-}
+};
+
+export default Filter;
