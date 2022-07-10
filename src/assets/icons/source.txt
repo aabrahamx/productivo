@@ -1,0 +1,5 @@
+
+All icons should be ios-glyphs themed for consistency.
+You can find them in the link below
+
+https://icons8.com/icons/ios-glyphs
