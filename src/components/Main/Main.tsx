@@ -1,53 +1,51 @@
 import React, { useState } from 'react';
-
+import { ToggleSwitch } from '../ToggleSwitch/ToggleSwitch';
 import DisplayTodoByStatus from '../../features/todo/DisplayTodoByStatus';
 import StatusWrapper from '../StatusWrapper/StatusWrapper';
-import Title from '../Title/ Title';
 
 export type TDisplay = 'todo' | 'doing' | 'finished';
+const options = [
+  { name: 'todo', color: 'red' },
+  { name: 'doing', color: 'yellow' },
+  { name: 'finished', color: 'green' },
+];
 
 export default function Main() {
   const [display, setDisplay] = useState<TDisplay>('todo');
-  const handleDisplayChange = (val: TDisplay) => setDisplay(val);
+  const handleDisplayChange = ({ target }: any) => setDisplay(target.value);
 
+  const [screen, setScreen] = useState(window.innerWidth);
+  window.onresize = () => setScreen(window.innerWidth);
+  const mdScreen = 768;
+
+  // smaller screen: only renders one status & btn switch for control
+  // bigger screen: renders all status, title and removes switch
   return (
-    <main>
-      <div className="flex w-full mt-3">
-        <div className="w-full md:w-1/3">
-          <Title
-            util="bg-red-400"
-            changeDisplay={handleDisplayChange}
-            display={display === 'todo'}
-            title="todo"
-          />
-          <StatusWrapper display={display === 'todo'}>
-            <DisplayTodoByStatus status="todo" />
-          </StatusWrapper>
-        </div>
+    <main className="mt-3">
+      {screen < mdScreen && (
+        <ToggleSwitch
+          options={options}
+          active={display}
+          onClick={handleDisplayChange}
+        />
+      )}
+      <div className="flex w-full mt-1">
+        {options.map((option) => {
+          const { name, color } = option;
 
-        <div className="w-full md:w-1/3">
-          <Title
-            util="bg-yellow-400"
-            changeDisplay={handleDisplayChange}
-            display={display === 'doing'}
-            title="doing"
-          />
-          <StatusWrapper display={display === 'doing'}>
-            <DisplayTodoByStatus status="doing" />
-          </StatusWrapper>
-        </div>
-
-        <div className="w-full md:w-1/3">
-          <Title
-            util="bg-green-400"
-            changeDisplay={handleDisplayChange}
-            display={display === 'finished'}
-            title="finished"
-          />
-          <StatusWrapper display={display === 'finished'}>
-            <DisplayTodoByStatus status="finished" />
-          </StatusWrapper>
-        </div>
+          return (
+            <div className="w-full md:w-1/3">
+              {screen > mdScreen && (
+                <h2 className={`bg-${color}-500 py-1.5 font-bold text-center`}>
+                  {name[0].toUpperCase() + name.slice(1)}
+                </h2>
+              )}
+              <StatusWrapper display={display === name}>
+                <DisplayTodoByStatus status={name} />
+              </StatusWrapper>
+            </div>
+          );
+        })}
       </div>
     </main>
   );
