@@ -1,6 +1,6 @@
 import { Todo } from "../features/todo/todoSlice";
 
-export const mockData: Todo[] = [
+export const todoMockData: Todo[] = [
   {
     id: 1652333017097,
     title: 'Home Work',
@@ -34,6 +34,6 @@ export const mockData: Todo[] = [
 
 export function fetchData() {
   return setTimeout(() => {
-    return mockData
+    return todoMockData
   }, 2000)
 }

@@ -11,7 +11,7 @@ export interface Todo {
   tags: string;
 }
 
-const initialState: Todo[] = [...mockData];
+const initialState: Todo[] = [...todoMockData];
 
 export const todoSlice = createSlice({
   name: 'todo',
