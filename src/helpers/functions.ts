@@ -1,3 +1,4 @@
+
 export const getTodoObjTemplate = (
   title: string,
   details: string,
@@ -12,3 +13,8 @@ export const getTodoObjTemplate = (
     status: 'todo',
   };
 };
+
+
+export const capitalize = (phrase: string) => {
+  return phrase[0].toUpperCase() + phrase.slice(1)
+}
