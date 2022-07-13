@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-
-import { mockData } from '../../helpers/data';
+import { todoMockData } from '../../helpers/todoMockData';
 
 export interface Todo {
   id: number;
@@ -21,52 +20,26 @@ export const todoSlice = createSlice({
       state.push(action.payload);
     },
 
-    deleteTodo: (state, action: PayloadAction<Todo>) => {
-      state.filter((todo) => todo.id !== action.payload.id);
-    },
+    changeTodoStatus: (
+      state,
+      action: PayloadAction<{ id: number; status: string }>
+    ) => {
+      const { id, status } = action.payload;
 
-    changeStatusToTodo: (state, action: PayloadAction<Todo['id']>) => {
-      state.forEach((todo) => {
-        if (todo.id === action.payload) {
-          todo.status = 'todo';
-        }
-      });
-    },
+      if (status === 'remove') {
+        return state.filter((todo) => todo.id !== id);
+      }
 
-    changeStatusToDoing: (state, action: PayloadAction<Todo['id']>) => {
       state.forEach((todo) => {
-        if (todo.id === action.payload) {
-          todo.status = 'doing';
-        }
-      });
-    },
-
-    changeStatusToFinished: (state, action: PayloadAction<Todo['id']>) => {
-      state.forEach((todo) => {
-        if (todo.id === action.payload) {
-          todo.status = 'finished';
-        }
-      });
-    },
-
-    changeStatusToArchived: (state, action: PayloadAction<Todo['id']>) => {
-      state.forEach((todo) => {
-        if (todo.id === action.payload) {
-          todo.status = 'archived';
+        if (todo.id === id) {
+          todo.status = status;
         }
       });
     },
   },
 });
 
-export const {
-  addTodo,
-  deleteTodo,
-  changeStatusToArchived,
-  changeStatusToDoing,
-  changeStatusToFinished,
-  changeStatusToTodo,
-} = todoSlice.actions;
+export const { addTodo, changeTodoStatus } = todoSlice.actions;
 
 export const selectAllTodo = (state: RootState) => state.todo;
 

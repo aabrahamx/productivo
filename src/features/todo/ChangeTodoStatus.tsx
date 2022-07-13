@@ -1,61 +1,57 @@
 import React from 'react';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import {
-  changeStatusToTodo,
-  changeStatusToDoing,
-  changeStatusToFinished,
-  changeStatusToArchived,
-} from './todoSlice';
+import { changeTodoStatus } from './todoSlice';
+import { capitalize } from '../../helpers/functions';
+import { selectTheme } from '../theme/themeSlice';
 
+const btnOptions = [
+  { name: 'todo', icon: '🟥' },
+  { name: 'doing', icon: '🟡' },
+  { name: 'finished', icon: '✅' },
+  { name: 'remove', icon: '🗑' },
+];
 
-const btnUtil =
-  'w-40 block my-2 p-1.5 pl-10 hover:bg-gray-50 text-xs font-semibold text-black rounded flex justify-start';
+interface IProps {
+  id: number;
+  handleToggle: () => void;
+}
 
-export function CardMenuOptions({ id, handleToggle }: any) {
+export const CardMenuOptions: React.FC<IProps> = ({ id, handleToggle }) => {
   const dispatch = useAppDispatch();
+  const theme = useAppSelector(selectTheme);
+  const [bgCard, bgBtnHover, colorBtn] =
+    theme === 'light'
+      ? ['bg-gray-100', 'hover:bg-gray-200', 'text-black']
+      : ['bg-gray-700', 'hover:bg-gray-600', 'text-white']
 
-  const moveToTodo = ({ target }: any) => {
+  const handleStatusChange = ({ currentTarget }: any) => {
+    const { id, value } = currentTarget;
+    dispatch(changeTodoStatus({ id: Number(id), status: value.toLowerCase() }));
     handleToggle();
-    const id = Number(target.value);
-    dispatch(changeStatusToTodo(id));
-  };
-
-  const moveToDoing = ({ target }: any) => {
-    handleToggle();
-    const id = Number(target.value);
-    dispatch(changeStatusToDoing(id));
-  };
-
-  const moveToFinished = ({ target }: any) => {
-    handleToggle();
-    const id = Number(target.value);
-    dispatch(changeStatusToFinished(id));
-  };
-
-  const moveToArchive = ({ target }: any) => {
-    handleToggle();
-    const id = Number(target.value);
-    dispatch(changeStatusToArchived(id));
   };
 
   return (
     <>
-      <div className="absolute top-0 border left-8 my-1.5 px-2 bg-gray-100 shadow-lg z-10">
-        <button onClick={moveToTodo} value={id} className={btnUtil}>
-          <span className="mr-2">🔴</span> Todo
-        </button>
-        <button onClick={moveToDoing} value={id} className={btnUtil}>
-          <span className="mr-2">🟡</span> Doing
-        </button>
-        <button onClick={moveToFinished} value={id} className={btnUtil}>
-          <span className="mr-2">🟢</span> Finished
-        </button>
-        <button onClick={moveToArchive} value={id} className={btnUtil}>
-          <span className="mr-2">🗑</span> Delete
-        </button>
+      <div
+        className={`absolute w-11/12 h-full top-0 left-7 my-1.5 px-2 z-10 flex justify-center items-center flex-wrap ${bgCard}`}
+      >
+        {btnOptions.map((option) => {
+          const { name, icon } = option;
+          return (
+            <button
+              key={name}
+              value={name}
+              id={String(id)}
+              onClick={handleStatusChange}
+              className={`flex justify-start px-3 py-1 mx-1 text-xs font-semibold rounded ${bgBtnHover} ${colorBtn}`}
+            >
+              <span className="mr-2">{icon}</span>
+              <span>{capitalize(name)}</span>
+            </button>
+          );
+        })}
       </div>
-      <div className="fixed w-screen h-screen top-0 left-0 bg-red-500/20"></div>
     </>
   );
-}
+};
