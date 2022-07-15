@@ -5,9 +5,9 @@ import StatusWrapper from '../StatusWrapper/StatusWrapper';
 
 export type TDisplay = 'todo' | 'doing' | 'finished';
 const options = [
-  { name: 'todo', color: 'red' },
-  { name: 'doing', color: 'yellow' },
-  { name: 'finished', color: 'green' },
+  { name: 'todo', color: 'bg-red-500' },
+  { name: 'doing', color: 'bg-yellow-500' },
+  { name: 'finished', color: 'bg-green-500' },
 ];
 
 export default function Main() {
@@ -29,6 +29,7 @@ export default function Main() {
           onClick={handleDisplayChange}
         />
       )}
+
       <div className="flex w-full mt-1">
         {options.map((option) => {
           const { name, color } = option;
@@ -36,10 +37,11 @@ export default function Main() {
           return (
             <div className="w-full md:w-1/3">
               {screen > mdScreen && (
-                <h2 className={`bg-${color}-500 py-1.5 font-bold text-center`}>
+                <h2 className={`${color} py-1.5 font-bold text-center`}>
                   {name[0].toUpperCase() + name.slice(1)}
                 </h2>
               )}
+
               <StatusWrapper display={display === name}>
                 <DisplayTodoByStatus status={name} />
               </StatusWrapper>
