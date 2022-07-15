@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ToggleSwitch } from '../ToggleSwitch/ToggleSwitch';
+import { ToggleSwitch } from '../../components/ToggleSwitch/ToggleSwitch';
 import DisplayTodoByStatus from '../../features/todo/DisplayTodoByStatus';
-import StatusWrapper from '../StatusWrapper/StatusWrapper';
+import StatusWrapper from '../../components/StatusWrapper/StatusWrapper';
 
 export type TDisplay = 'todo' | 'doing' | 'finished';
 const options = [
@@ -10,7 +10,7 @@ const options = [
   { name: 'finished', color: 'bg-green-500' },
 ];
 
-export default function Main() {
+const TodoContainer: React.FC = () => {
   const [display, setDisplay] = useState<TDisplay>('todo');
   const handleDisplayChange = ({ target }: any) => setDisplay(target.value);
 
@@ -51,4 +51,6 @@ export default function Main() {
       </div>
     </main>
   );
-}
+};
+
+export default TodoContainer;

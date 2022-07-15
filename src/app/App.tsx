@@ -3,7 +3,7 @@ import { useAppSelector } from './hooks';
 import { selectTheme, ITheme } from '../features/theme/themeSlice';
 
 import Header from '../components/Header/Header';
-import Main from '../components/Main/Main';
+import TodoContainer from '../containers/TodoContainer/TodoContainer';
 import { AddTodo } from '../features/todo/AddTodo';
 
 export const ThemeContext = createContext<ITheme['theme']>('dark');
@@ -14,7 +14,7 @@ const App: React.FC = () => {
     <AppWrapper style={theme}>
       <ThemeContext.Provider value={theme}>
         <Header />
-        <Main />
+        <TodoContainer />
         <AddTodo />
       </ThemeContext.Provider>
     </AppWrapper>
